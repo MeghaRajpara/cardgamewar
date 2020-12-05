@@ -1,7 +1,3 @@
-#####################################
-### WELCOME TO YOUR OOP PROJECT #####
-#####################################
-
 # For this project you will be using OOP to create a card game. This card game will
 # be the card game "War" for two players, you an the computer. If you don't know
 # how to play "War" here are the basic rules:
@@ -39,21 +35,43 @@ class Deck:
     the players. It will use SUITE and RANKS to create the deck. It should also
     have a method for splitting/cutting the deck in half and Shuffling the deck.
     """
-    pass
+    def __init__(self):
+        print("Creating new deck")
+        self.allcards = [(s,r) for s in SUITE for r in RANKS]
+    
+    def shuffle(self):
+        shuffle(self.allcards)
+
+    def split_cards(self):
+        return (self.allcards[26:],self.allcards[:26])
 
 class Hand:
     '''
     This is the Hand class. Each player has a Hand, and can add or remove
     cards from that hand. There should be an add and remove card method here.
     '''
-    pass
+    def __init__(self,cards):
+        self.cards = cards
+
+    def __str__(self):
+        return "Cards {}".format(len(self.cards))
+
+    def add_card(self,cards):
+        self.cards.extend(cards)
+
+    def remove_card(self,cards):
+        return self.cards.pop()
 
 class Player:
     """
     This is the Player class, which takes in a name and an instance of a Hand
     class object. The Payer can then play cards and check if they still have cards.
     """
-    pass
+    def __init__(self,name,hand):
+        self.name = name
+        self.hand = hand
+
+    
 
 
 ######################
